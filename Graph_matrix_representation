@@ -1,0 +1,64 @@
+import java.util.*;
+class Graph{
+    
+    int V;
+    
+    int[][] graph ;
+    public Graph(int v){
+        this.V=v;
+        graph=new int[V][V];
+    }
+    
+    
+    
+    
+    // to connection between nodes
+   public void addEdge(int src,int dst){
+       
+       graph[src][dst]=1;
+       
+        graph[dst][src]=1;
+       
+       
+   }
+   
+   
+   // print the graph
+   public void print(){
+       
+       for(int i=0;i<V;i++){
+           
+           System.out.println(i);
+           for(int j=0;j<V;j++)
+           {
+               System.out.print(graph[i][j]+"->");
+           }
+           
+           System.out.println();
+           
+       }
+       
+       
+       
+   }
+    
+    
+    
+}
+public class Main
+{
+	public static void main(String[] args) {
+	
+	Graph graph = new Graph(5);
+	
+	graph.addEdge(0,1);
+	graph.addEdge(0,4);
+	graph.addEdge(1,2);
+	graph.addEdge(2,3);
+	graph.addEdge(2,4);
+	graph.addEdge(3,4);
+	
+	graph.print();
+	
+	}
+}
