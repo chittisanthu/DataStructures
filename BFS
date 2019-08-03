@@ -1,0 +1,129 @@
+package data.graph;
+
+
+
+import java.util.*;
+class Graph{
+    
+    int V;
+    
+    LinkedList<Integer> list[];
+    
+    
+    
+    public Graph(int v){
+        
+        this.V=v;
+        
+        list=new LinkedList[this.V];
+        
+        
+        for(int i=0;i<V;i++ ){
+            
+            
+            list[i]= new LinkedList<Integer>();
+            
+        }
+        
+    }
+    
+    
+    // to connection between nodes
+   public void addEdge(int src,int dst){
+       
+       list[src].add(dst);
+       
+        list[dst].add(src);
+       
+       
+   }
+   
+   
+   // print the graph
+   public void print(){
+       
+       for(int i=0;i<V;i++){
+           
+           System.out.println(i);
+           for(int I : list[i])
+           System.out.print(I+"->");
+           
+           System.out.println();
+           
+       }
+       
+       
+       
+   }
+   
+  
+    
+}
+
+class Traversal{
+     
+     
+   public void bfs(Graph g,int s){
+       
+       
+       Queue<Integer> q = new LinkedList<>();
+       
+       boolean[] visited =new boolean[g.V];
+       
+       q.add(s);
+       
+       visited[s]=true;
+       LinkedList<Integer> temp;
+       
+       System.out.println(s);
+       
+       while(q.size()!=0){
+           s=q.poll();
+           temp=g.list[s];
+           
+           Iterator<Integer> itr = temp.listIterator();
+           while(itr.hasNext()){
+              int  i=itr.next();
+               if(!visited[i]){
+                   
+                   System.out.print(i+" ");
+                   visited[i]=true;
+                   q.add(i);
+                   
+                   }
+               
+               
+           }
+           System.out.println();
+           
+                    
+       }
+       
+            
+   }
+    
+    
+    
+}
+
+
+public class BFS {
+	
+	
+	public static void main(String[] args) {
+		
+	Graph graph = new Graph(5);
+	
+	graph.addEdge(0,1);
+	graph.addEdge(0,4);
+	graph.addEdge(1,2);
+	graph.addEdge(2,3);
+	graph.addEdge(2,4);
+	graph.addEdge(3,4);
+	
+	Traversal ts =new Traversal();
+	ts.bfs(graph,0);
+	
+	}	
+
+}
